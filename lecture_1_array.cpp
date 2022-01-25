@@ -21,7 +21,6 @@ int binary_search() {
         }
     }
     return -1;
-
 }
 
 
