@@ -5,12 +5,16 @@ using namespace std;
 struct Node{
     int prefix_count;
     bool isEnd;
+    int index;
     struct Node *child[26];
 }*head;
+
+int mIdx = 0;
 
 void init() {
     head = new Node();
     head->isEnd = false;
+    head->index = mIdx;
     head->prefix_count = 0;
 }
 
@@ -28,31 +32,34 @@ void insert(string word) {
         current = current->child[letter];
     }
     current->isEnd = true;
+    current->index = ++mIdx;
 }
 
-bool search(string word) {
+int search(string word) {
     Node *current = head;
 
 	for(int i = 0 ; i < word.length(); ++i)
 	{
 		int letter = (int)word[i] - (int)'a';
 		if(current->child[letter] == NULL) {
-            return false;
+            return 0;
         }
 		current = current->child[letter];
 	}
-	return current->isEnd;
+	return current->index;
 }
 
 int main() {
     init();
     string input = "apple";
     insert(input);
+    input = "samsung";
+    insert(input);
+    input = "victory";
+    insert(input);
 
-	if(search("apple"))
-		printf("found apple\n");
-	if(search("help"))
-		printf("found help\n");
+    int rtn = search("samsung");
+    cout<<"rtn = "<<rtn<<endl;
 
 
     return 0;
