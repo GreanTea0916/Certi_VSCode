@@ -55,15 +55,26 @@ struct cmp {
 };
 
 void runQueue() {
+    cout<<"runQueue"<<endl;
     queue<Package> q;
     q.push(Package(1,1,1));
     q.push(Package(2,1,1));
     q.push(Package(3,1,1));
     q.push(Package(4,1,1));
     q.push(Package(5,1,1));
+    cout<<q.front().id<<endl;
+    cout<<q.back().id<<endl;
+    q.pop();
+    int size = q.size();
+    for(int i =0; i < size; i++){
+        Package item = q.front();
+        cout<<"id = "<<item.id<<", "<<item.price<<", "<<item.area<<endl;
+        q.pop();
+    }
 }
 
 void runPQ() {
+    cout<<"runPQ"<<endl;
     priority_queue<Package, vector<Package>, cmp> pq;
     pq.push(Package(1,1,1));
     pq.push(Package(2,1,1));
@@ -79,11 +90,24 @@ void runPQ() {
 
 }
 
+void runHash(){
+    vector<Package> vec;
+    string strList[5] = {"apple", "banana", "cocoa", "diamond", "elephant"};
+    unordered_map<string, int> hash;
+    for(int i = 0; i < 5; i++){
+        // string str = strList[i];
+        hash[strList[i]] = i;
+    }
+
+    cout<<"value = "<<hash["apple"]<<endl;
+}
+
 int main() {
 
     runVector();
     runQueue();
     runPQ();
+    runHash();
 
     return 0;
 }
