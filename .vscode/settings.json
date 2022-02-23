@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "unordered_map": "cpp",
+        "queue": "cpp",
+        "vector": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__string": "cpp",
+        "algorithm": "cpp",
+        "string_view": "cpp",
+        "string": "cpp",
+        "*.tcc": "cpp",
+        "hashtable": "cpp"
+    }
+}
